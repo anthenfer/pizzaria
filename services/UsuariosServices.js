@@ -1,5 +1,24 @@
+const usuarios = require('../databases/usuarios.json');
+
 function listar(){
-    // Seu código aqui
+
+    const formatUsuario = usuario => {
+            return {
+                index: usuario.index,
+                id: usuario.id,
+                nome: usuario.nome,
+                email: usuario.email
+            }
+        }
+    let usuariosFormatados = usuarios.map(formatUsuario);
+    
+    console.table(usuariosFormatados);
+}
+
+function listarNomes(){
+
+    console.table(usuarios.map(usuario => usuario.nome));
+    
 }
 
 function salvar(arrayDeUsuarios){
@@ -49,6 +68,7 @@ function alterarFormaDePagamento(novaFormaDePagamento, posicaoDaFormaDePagamento
 const UsuariosServices = {
     cadastrar,
     listar,
+    listarNomes,
     detalhar,
     remover,
     alterar,
