@@ -18,6 +18,7 @@ function cadastrarPizza(objeto){
 
     //Salvar a pizza no array de pizzas == não saberia fazer
     pizzas.push(novaPizza);
+    //exemplo dado: salvar(pizzas);
     fs.writeFileSync('./databases/pizzas.json', JSON.stringify(pizzas, null, 4));
 };
 
@@ -38,5 +39,5 @@ let pizza = {
 }
 
 
-//Porque que 'oizza' está no singular? 
+//Porque que 'pizza' está no singular? 
 cadastrarPizza(pizza);

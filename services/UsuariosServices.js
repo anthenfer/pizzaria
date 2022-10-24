@@ -21,8 +21,31 @@ function listarNomes(){
     
 }
 
+function buscar(trecho){
+
+    let temTrechoNoNome = usuario => {
+        if(usuario.nome.includes(trecho)){
+            return true; 
+        } else {
+            return false;
+        }
+        //Jeito complicado que não entendi
+            // let temTrechoNoNome = usuario => {
+            // return usuario.nome.includes(trecho);
+            //};
+
+        //Complicando mais ainda usando arrow function
+            // let temTrechoNoNome = usuario => usuario.nome.includes(trecho)   
+    }
+    let usuariosComNomesBuscados = usuarios.filter(temTrechoNoNome);
+    
+    return usuariosComNomesBuscados;
+    //Retornar um array com os usuários que tenham nome contendo o trecho buscado
+}
+
 function salvar(arrayDeUsuarios){
-    // Seu código aqui
+    const fs = require('fs');
+    fs.writeFileSync('./databases/usuarios.json', JSON.stringify(arrayDeUsuarios, null, 4));
 }
 
 function cadastrar(objeto){
@@ -69,6 +92,8 @@ const UsuariosServices = {
     cadastrar,
     listar,
     listarNomes,
+    salvar,
+    buscar,
     detalhar,
     remover,
     alterar,
