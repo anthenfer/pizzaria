@@ -23,7 +23,7 @@ function cadastrarUsuario(objeto){
     usuarios.push(usuario);
 
     // **** Salvar o ARRAY DE USUARIOS no arquivo
-    //estava assim --->>> salvar(usuarios);
+    //salvar(usuarios);
     fs.writeFileSync("./databases/usuarios.json", JSON.stringify(usuarios,null,4));
 }
 

@@ -16,6 +16,9 @@ function cadastrarPizza(objeto){
         img: objeto.img
     }   
 
+    //Não entendi o porque do objeto novaPizza{} recebe esse parametro objeto, de onde vem e nem pra onde vai 
+    //O que na prática ele está fazendo ou faria... 
+
     //Salvar a pizza no array de pizzas == não saberia fazer
     pizzas.push(novaPizza);
     //exemplo dado: salvar(pizzas);
