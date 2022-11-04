@@ -49,8 +49,6 @@ function salvar(arrayDeUsuarios) {
 }
 
 function cadastrar(objeto) {
-    //     Objetivo: Essa função deve receber dados de um usuário e registrar um novo usuário 
-    //     no array presente no arquivo usuarios.json. 
 
     const bcrypt = require('bcrypt'); //biblioteca importada para criptografar a senha
     const usuarios = require('../databases/usuarios.json'); //Para registrar um novo array em usuarios.json
@@ -58,10 +56,7 @@ function cadastrar(objeto) {
 
     let senhaCriptografada = bcrypt.hashSync(objeto.senha, 10); //Para criptografar a senha
     let novoId = usuarios[usuarios.length -1].id + 1;
-    //     Objetivo: Essa função deve receber dados de um usuário e registrar um novo usuário no array 
-    //     presente no arquivo usuarios.json. 
-    //     O objeto contendo os dados do usuário devem seguir o seguinte modelo.
-
+    
     let usuarioEsperado = {
         id: novoId, 
         nome: objeto.nome,
@@ -70,37 +65,24 @@ function cadastrar(objeto) {
         endereco: [objeto.endereco]
     }
 
-    //Porque um está no plural e o outro no singular? 
     usuarios.push(usuarioEsperado);
-    //         O objeto à ser salvo no arquivo deverá seguir o seguinte modelo
-    //         {
-    //             id: 22
-    //             nome: "Nome do Usuário",
-    //             email: "email@dousuario.com"
-    //             senha: "$2b$10$/DyrZvGhcHHQ4PgSKgDhtexKiNTl3QKnYpLPI.pl1gv4VFtQHFvKy"
-    //             enderecos: ["Rua dos usuários, nº 256. Usuariolândia-BA"],
-    //             formasDePagamento: []
-    //         }
-
-    //         Essa função deve receber um objeto seguindo o modelo de parâmetro. ok 
-    //         Essa função não deve retornar nada ok
-    //         O id do novo usuário deve ser único. ok
-    //         A senha do usuário deve ser armazenada criptografada. ok
-
-    fs.writeFileSync("./databases/usuarios.json", JSON.stringify(usuarios, null, 4));
+    fs.writeFileSync('./databases/usuarios.json', JSON.stringify(usuarios, null, 4));
 
     let usuarioDeTeste = 
 {
-    nome: "Antonio Henrique Ferreira",
-    email: "antonio@henriqueferreira.com",
-    senha: "abcdef",
-    endereço: "Rua dos Desesperados, 123"
-}
+    "nome": "Antonio Henrique Ferreira",
+    "email": "antonio@henriqueferreira.com",
+    "senha": "abcdef",
+    "endereço": "Rua dos Desesperados, 123"
+};
 
 cadastrar(usuarioDeTeste);
 }
 
 function detalhar(idUsuario) {
+
+    //console.table, talvez? 
+
     // Objetivo: Essa função deve mostrar detalhes de um determinado usuário.
     //     Os detalhes devem ser exibidos desta forma;
     
@@ -136,7 +118,6 @@ function detalhar(idUsuario) {
     let usuariosDetalhados = idUsuarios.map(detalharUsuario);
 
     console.table(usuariosDetalhados);
-        
 }
 
 function remover(idDoUsuarioParaRemover) {
