@@ -81,51 +81,28 @@ cadastrar(usuarioDeTeste);
 
 function detalhar(idUsuario) {
 
-    //console.table, talvez? 
+    //function detalhar(id,array){
+    const usuario = usuarios.find(item => item.id == idUsuario);
+    console.log("Nome: " + usuario.nome); 
+    console.log("E-mail: " + usuario.email);   
+    console.log("Endereços: ");
+    console.table(usuario.enderecos);
+    console.log("Formas de pagamentos: ");
+    console.table(usuario.formasDePagamento);
 
-    // Objetivo: Essa função deve mostrar detalhes de um determinado usuário.
-    //     Os detalhes devem ser exibidos desta forma;
-    
-    //     Nome: Nome do Usuário
-    //     E-mail: email@do-usuario.com
-
-    //     Endereços
-    //     ┌─────────┬───────────────────────┐
-    //     │ (index) │        Values         │
-    //     ├─────────┼───────────────────────┤
-    //     │    0    │ 'Rua benevides, 33'   │
-    //     │    1    │ 'Av das Palmas, 123'  │
-    //     └─────────┴───────────────────────┘
-        
-    //     Formas de Pagamento
-    //     ┌─────────┬───────────────────────┐
-    //     │ (index) │        Values         │
-    //     ├─────────┼───────────────────────┤
-    //     │    0    │ '1234 1234 1234 1234' │
-    //     │    1    │ '1234 1234 1234 1236' │
-    //     └─────────┴───────────────────────┘
-        
-    //     Essa função deve receber o id de um usuário.
-    //     Ela não deve retornar nada.
-    const detalharUsuario = idUsuario => {
-        return {
-            id: usuario.id,
-            nome: usuario.nome,
-            email: usuario.email,
-            formasDePagamentos: usuario.formasDePagamentos
-        }
-    }
-    let usuariosDetalhados = idUsuarios.map(detalharUsuario);
-
-    console.table(usuariosDetalhados);
 }
 
 function remover(idDoUsuarioParaRemover) {
-    // Seu código aqui
-    // Objetivo: A função deve remover um usuário do arquivo usuarios.json a partir do seu id.
-    // Essa função deve receber o id de um usuário.
-    // Ela não deve retornar nada.
-  
+    //usuarios referente a 'const = usuarios' que está se referindo 
+    const posicaoUsuario = usuarios.findIndex(item => item.id == idDoUsuarioParaRemover)   
+    //console.log(posicaoUsuario);
+
+    //Removendo um usuario do array de usuarios.json  
+    usuarios.splice(posicaoUsuario, 1);
+    console.log(usuarios);
+
+    //Salvando alterações no arquivo usuarios.json
+    salvar(usuarios);
 }
 
 function alterar(novosDados, idUsuario) {
