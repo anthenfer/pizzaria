@@ -29,6 +29,10 @@ servidor.get('/carrinho', (req,res) =>{
     //res.sendFile(__dirname + '/ envia um arquivo hmtl 
 });
 
+servidor.get('/perfil',(req, res)=>{
+    return res.sendFile(__dirname + "/views/perfil.html");
+})
+
 
 
 // 4 - Por o servidor para rodar   

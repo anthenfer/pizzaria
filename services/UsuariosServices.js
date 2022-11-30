@@ -1,4 +1,6 @@
-const usuarios = require('../databases/usuarios.json');
+const bcrypt = require('bcrypt'); //biblioteca importada para criptografar a senha
+const usuarios = require('../databases/usuarios.json'); //Para registrar um novo array em usuarios.json
+const fs = require('fs');
 
 function listar() {
 
@@ -44,15 +46,10 @@ function buscar(trecho) {
 }
 
 function salvar(arrayDeUsuarios) {
-    const fs = require('fs');
     fs.writeFileSync('./databases/usuarios.json', JSON.stringify(arrayDeUsuarios, null, 4));
 }
 
 function cadastrar(objeto) {
-
-    const bcrypt = require('bcrypt'); //biblioteca importada para criptografar a senha
-    const usuarios = require('../databases/usuarios.json'); //Para registrar um novo array em usuarios.json
-    const fs = require('fs');
 
     let senhaCriptografada = bcrypt.hashSync(objeto.senha, 10); //Para criptografar a senha
     let novoId = usuarios[usuarios.length -1].id + 1;
@@ -62,21 +59,43 @@ function cadastrar(objeto) {
         nome: objeto.nome,
         email: objeto.email,
         senha: senhaCriptografada,
-        endereco: [objeto.endereco]
+        endereco: [objeto.endereco],
+        formasDePagamento: []
     }
 
     usuarios.push(usuarioEsperado);
     fs.writeFileSync('./databases/usuarios.json', JSON.stringify(usuarios, null, 4));
+}
 
-    let usuarioDeTeste = 
-{
-    "nome": "Antonio Henrique Ferreira",
-    "email": "antonio@henriqueferreira.com",
-    "senha": "abcdef",
-    "endereço": "Rua dos Desesperados, 123"
-};
+function cadastrarArray(objeto,array){
+    // console.log(array);
 
-cadastrar(usuarioDeTeste);
+    //Calculando campo maiorDeIdade
+    let maiorIdade = true;
+    if(objeto.idade < 18){
+        maiorIdade = false;
+    }
+
+    let objetoFormatado = {
+        id: 11,
+        nome: objeto.nome,
+        sobrenome: objeto.sobrenome,
+        idade: objeto.idade,
+        dependentes: objeto.dependentes,
+        maiorDeIdade: maiorIdade,
+        email: objeto.email,
+        senha: "123"
+    }
+
+
+    //Adicionando objeto dentro do array
+    array.push(objetoFormatado);
+    // console.log(array);
+
+    //Salvar no arquivo usuarios.json
+    //Usar o módulo File System para escrever dentro do arquivo json
+    fs.writeFileSync("./databases/usuarios.json",JSON.stringify(array,null,4)); 
+
 }
 
 function detalhar(idUsuario) {
@@ -106,27 +125,51 @@ function remover(idDoUsuarioParaRemover) {
 }
 
 function alterar(novosDados, idUsuario) {
-    // Seu código aqui
-    // Objetivo: A função deve alterar os dados de pessoais de um usuário (nome, email e senha).
-    // Ela recebe dois parâmetros.
-    // O primeiro, um objeto no seguinte formato
-    // {
-    //     nome: "Novo Nome do Usuário da Silva",
-    //     email: "novo@email-do-usuario.com",
-    //     senha: "nova-senha-sem-criptografar"
-    // }
-    // O segundo, o id do usuário que terá seus dados alterados.
-    // A senha deve ser armazenada criptografada.
-    // Essa função não retorna nada
+    //Procurando o usuario de acordo com o id recebido na função
+    const usuario = usuarios.find(item => item.id == idUsuario)
+
+    let senhaCriptografada = bcrypt.hashSync(novosDados.senha, 10);
+
+    //Verificando se o usuario foi encontrado:
+    if(usuario != undefined){
+    //Se for encontrado, alteramos os dados
+        usuario.nome = novosDados.nome
+        usuario.email = novosDados.email
+        usuario.senha = senhaCriptografada
+    }else{
+    //Se não for encontrado, mostra mensagem abaixo    
+        console.log("Usuario não encontrado");
+    }
+    
+    //Para salvar em usuarios.json
+    salvar(usuarios);
 }
 
 function addEndereco(novoEndereco, idUsuario) {
+
+    //Procurando um usuario com o id recebido
+    const usuario = usuarios.find(item => item.id == idUsuario)
+    
+    //Verificando se existe o usuario
+    if(usuario != undefined){
+    //Se existe, adicionar novo endereço    
+        novoEndereco.push(usuarios)
+    } else {
+        console.log("Endereço não adicionado")
+    }
+
     // Seu código aqui
     // Objetivo: A função deve adicionar um novo endereço no array de endereços do usuário e atualizar o arquivo usuarios.json
     //     Essa função recebe dois parametros.
     //     O primeiro, uma string contendo um novo endereço.
     //     O segundo, o id do usuário que terá adicionado o novo endereço.
     //     Essa função não retorna nada.
+
+    //Para adicionar o array usar o .push 
+    //Olhar novamente função alterar / detalhar 
+
+    //Salvando no arquivo JSON, declarar o array onde será salvo (______,null,4);
+    fs.writeFileSync("./databases/usuarios.json",JSON.stringify(novoEndereco,null,4)); 
 }
 
 function removerEndereco(posicaoDoEndereco, idUsuario) {
@@ -151,6 +194,7 @@ function alterarFormaDePagamento(novaFormaDePagamento, posicaoDaFormaDePagamento
 
 const UsuariosServices = {
     cadastrar,
+    cadastrarArray,
     listar,
     listarNomes,
     salvar,
