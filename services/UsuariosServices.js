@@ -117,6 +117,8 @@ function remover(idDoUsuarioParaRemover) {
     //console.log(posicaoUsuario);
 
     //Removendo um usuario do array de usuarios.json  
+    //A função splice recebe dois argumento dentro dos parenteses, o primeiro determina a posição do primeiro item a ser excluído
+    //E o segundo argumento determina o numero de elementos a serem excluídos. 
     usuarios.splice(posicaoUsuario, 1);
     console.log(usuarios);
 
@@ -149,11 +151,11 @@ function addEndereco(novoEndereco, idUsuario) {
 
     //Procurando um usuario com o id recebido
     const usuario = usuarios.find(item => item.id == idUsuario)
-    
+    console.log(usuario);
     //Verificando se existe o usuario
     if(usuario != undefined){
     //Se existe, adicionar novo endereço    
-        novoEndereco.push(usuarios)
+        usuario.endereco.push(novoEndereco)
     } else {
         console.log("Endereço não adicionado")
     }
@@ -169,27 +171,106 @@ function addEndereco(novoEndereco, idUsuario) {
     //Olhar novamente função alterar / detalhar 
 
     //Salvando no arquivo JSON, declarar o array onde será salvo (______,null,4);
-    fs.writeFileSync("./databases/usuarios.json",JSON.stringify(novoEndereco,null,4)); 
+    salvar(usuarios); 
 }
 
 function removerEndereco(posicaoDoEndereco, idUsuario) {
-    // Seu código aqui
+    
+    //Procurando um usuario com o id recebido
+    const usuario = usuarios.find(item => item.id == idUsuario)
+
+    //Aplicando condição
+    if (usuario != undefined){ 
+        usuario.endereco.splice(posicaoDoEndereco, 1)
+    }else {
+        console.log("Usuário não encontrado!")
+    }
+    //Removendo um usuario do array de usuarios.json  
+    //A função splice recebe dois argumento dentro dos parenteses, o primeiro determina a posição do primeiro item a ser excluído
+    //E o segundo argumento determina o numero de elementos a serem excluídos. 
+    //usuario.endereco.splice(posicaoDoEndereco, 1)
+    salvar(usuarios);
 }
 
 function alterarEndereco(posicaoDoEndereco, novoEndereco, idUsuario) {
-    // Seu código aqui        
+    // Objetivo: A função deve alterar um endereço de um usuário.
+    // Essa função deve receber três parâmetros.
+    // O primeiro, a posicao do endereco no array de enderecos do usuário
+    // O segundo, uma string contendo o novo endereço.
+    // O terceiro, o id do usuário que terá um endereço alterado
+
+    //Procurando um usuario com o id recebido
+    const usuario = usuarios.find(item => item.id == idUsuario)
+    
+    if(usuario != undefined){
+        //Atribuindo um novo endereço para o usuario ' sempre utilizar o sinal de = '
+        usuario.endereco[posicaoDoEndereco] = novoEndereco
+    } else {
+        console.log("Usuário não encontrado")
+    }
+    
+    salvar(usuarios);
 }
 
 function addFormaDePagamento(novaFormaDePagamento, idUsuario) {
-    // Seu código aqui
+    // Objetivo: A função deve adicionar uma nova forma de pagamento no array de formasDePagamento do usuário e atualizar o arquivo usuarios.json
+    // Essa função recebe dois parametros.
+    // O primeiro, uma string contendo a nova forma de pagamento.
+    // O segundo, o id do usuário que terá adicionada a nova forma de pagamento.
+    // Essa função não retorna nada.
+
+    //Procurando um usuario com o id recebido
+    const usuario = usuarios.find(item => item.id == idUsuario)
+
+    //Aplicando condição: adicionando no array 'formasDePagamento' a 'novaFormaDePagamento' 
+    //que a função recebe direto como parametro...
+    if(usuario != undefined){
+        usuario.formasDePagamento.push(novaFormaDePagamento)
+    }else{
+        console.log("Forma de pagamento já existe!")
+    }
+
+    //Chamando a função salvar para atualizar o arquivo usuarios.json
+    salvar(usuarios);
 }
 
 function removerFormaDePagamento(posicaoDaFormaDePagamento, idUsuario) {
-    // Seu código aqui
+    // Objetivo: A função deve remover a forma de pagamento especificada de um usuário.
+    // Essa função deve receber dois parâmetros.
+    // O primeiro, a posicao da forma de pagamento no array de formas de pagamento do usuário
+    // O segundo, o id do usuário que terá o array removido
+    // Essa função não retorna nada.
+
+    //Procurando um usuario com o id recebido
+    const usuario = usuarios.find(item => item.id == idUsuario)
+    if(usuario != undefined){
+
+        //usuarios referente a 'const = usuarios' que está se referindo 
+    const posicaoDaFormaDePagamentoParaRemover = usuarios.findIndex(item => item.id == posicaoDaFormaDePagamento);
+        //Usando o slice para identificar a posição e remover do array usuarios.json
+    usuarios.splice(posicaoDaFormaDePagamentoParaRemover, 1);
+    
+    } else {
+        console.log("Usuário não encontrado")
+    }
+  
+    //Salvar e atualizar o arquivo usuarios.json
+    salvar(usuarios);
 }
 
 function alterarFormaDePagamento(novaFormaDePagamento, posicaoDaFormaDePagamento, idUsuario) {
-    // Seu código aqui
+    //Encontrando o usuário por ID
+    const usuario = usuarios.find(item => item.id == idUsuario)
+    
+
+    if(usuario != undefined){
+        //Atribuindo um novo endereço para o usuario ' sempre utilizar o sinal de = '
+        usuario.formasDePagamento[posicaoDaFormaDePagamento] = novaFormaDePagamento;
+    } else {
+        console.log("Usuário não encontrado")
+    }
+    
+    salvar(usuarios);
 }
 
 const UsuariosServices = {
