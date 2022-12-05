@@ -14,7 +14,7 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-body::before{
+body:before{
 	content: "";
 	position: fixed;
 	top: 0;	left: 0;
@@ -32,6 +32,11 @@ header {
     padding: 10px;
     height: 80px;
     gap: 5px;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    top: 0;
+    left: 0;
 }
 
 header input {
