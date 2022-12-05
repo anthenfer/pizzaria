@@ -5,7 +5,7 @@ body {
 }
 
 #form-usuario {
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     width: 600px;
     padding: 20px;
 }
@@ -19,7 +19,7 @@ body {
     margin-bottom: 15px;
 }
 
-#form-usuario .campos input {
+#form-usuario .campos input{
     display: block;
     width: 100%;
 }
@@ -28,6 +28,6 @@ body {
     width: 100%;
 }
 
-#form-usuario .input-file-container {
-    width: 50%;
+#form-usuario .input-file-container{
+    width:50%;
 }

@@ -1,9 +1,8 @@
-/*Reset CSS*/
-
+/* Reset CSS */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -16,24 +15,42 @@ body {
 }
 
 body::before{
-    content: "";
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-image: url(/img/bg.jpeg);
-    filter: brightness(0.3);
-    background-size: cover;
-    z-index: -1;
+	content: "";
+	position: fixed;
+	top: 0;	left: 0;
+	width: 100%; height: 100%;
+	background-image: url(/img/bg.jpeg);
+	filter: brightness(0.3);
+	background-size: cover;
+	z-index: -1;
 }
 
 header {
     background-color: rgba(0,0,0,0.5);
     display: flex;
-    gap: 5px;
     align-items: stretch;
-    justify-content: space-between;
-    padding: 10px 10px;
+    padding: 10px;
     height: 80px;
+    gap: 5px;
+}
+
+header input {
+    font-size: 1.5rem;
+    border-style: none;
+    padding: 10px;
+    width: 600px;
+    flex-grow: 1;
+}
+
+header a {
+    text-decoration: none;
+}
+
+header span {
+    color: #fff;
+    background-color:#ff5100;
+    border-radius: 50%;
+    padding: 3px 9px;
 }
 
 button, .input-file-container {
@@ -46,19 +63,7 @@ button, .input-file-container {
     cursor: pointer;
 }
 
-header input {
-    font-size: 1.5rem;
-    width: 600px;
-    flex-grow: 0.5;
-    padding: 10px;
-    border-style: none;
-}
-
-header a {
-    text-decoration: none;
-}
-
-button:hover, .input-file-container:hover {
+button:hover, .input-file-container:hover{
     background-color: black;
 }
 
@@ -68,8 +73,12 @@ button:hover, .input-file-container:hover {
 }
 
 #logo {
-    width: 64px;
     height: 64px;
+    width: 64px;
+}
+
+.btBuscar {
+    width: 300px;
 }
 
 article > img {
@@ -78,9 +87,14 @@ article > img {
 
 .input-file-container {
     background-color: #ff5100;
-    
 }
 
-input[type="file"]{
+input[type="file"] {
     display: none;
+}
+
+@media screen and (max-width: 550px){
+    .btBuscar {
+        display: none;
+    }
 }
