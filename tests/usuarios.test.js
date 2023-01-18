@@ -35,7 +35,10 @@ const UsuariosServices = require('../services/UsuariosServices.js');
 
 // UsuariosServices.alteraEndereco(0, novoEndereco, 132);
 
-// let novaFormaDePagamento = "Cartão de crédito"
+// let novaFormaDePagamento = "Cartão de débito"
 // UsuariosServices.addFormaDePagamento(novaFormaDePagamento, 130);
 
-UsuariosServices.removerFormaDePagamento(0, 130);
+//UsuariosServices.removerFormaDePagamento(0, 130);
+
+let pagamentoNovo = "Pix";
+UsuariosServices.alterarFormaDePagamento(pagamentoNovo, 0, 130);

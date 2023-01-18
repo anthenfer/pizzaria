@@ -244,12 +244,9 @@ function removerFormaDePagamento(posicaoDaFormaDePagamento, idUsuario) {
     //Procurando um usuario com o id recebido
     const usuario = usuarios.find(item => item.id == idUsuario)
     if(usuario != undefined){
-
-        //usuarios referente a 'const = usuarios' que está se referindo 
-    const posicaoDaFormaDePagamentoParaRemover = usuarios.findIndex(item => item.id == posicaoDaFormaDePagamento);
-        //Usando o slice para identificar a posição e remover do array usuarios.json
-    usuarios.splice(posicaoDaFormaDePagamentoParaRemover, 1);
-    
+     
+    //Usando o slice para identificar a posição e remover do array usuarios.json
+    usuario.formasDePagamento.splice(posicaoDaFormaDePagamento, 1);
     } else {
         console.log("Usuário não encontrado")
     }
