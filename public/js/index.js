@@ -210,6 +210,9 @@ console.log(main) //Porém, se usar getElementsByTagName aqui será tratado como
         "score": 24
     }
 
+
+// <<<<< ----- Funções que manipulam a DOM ------ >>>>>>>
+
     function showPizza(pizza){
 
     let article = document.createElement("article");
@@ -246,29 +249,31 @@ main.appendChild(article);
     //     }
     };
 
-showPizzas(pizzasNoMenu);    
-
-    function onCampoDeBuscaKeyup(){
-        //Capturar o trecho de busca pelo usuário 
-        const trechoBuscado = campoDeBusca.value;
-        //Criar um array com as pizzas filtradas
-        const pizzasFiltradas = filtrarPizzas(pizzas, trechoBuscado)
-        //Mostrar as pizzas filtradas
-        showPizzas(pizzasFiltradas);
-    }
 
 //Fazendo uma função que consiga buscar o trecho buscado, e
 //a função deve retornar todas as pizzas que exister no array com 
 //o trecho do nome buscado
 
+
+// <<<<<<< ----- Funções auxiliares ------ >>>>>>>
 function filtrarPizzas(pizzas, trechoBuscado){
     let pizzasFiltradas = pizzas.filter(
         pizza => pizza.nome.toUpperCase().includes(trechoBuscado.toUpperCase())
     );
     return pizzasFiltradas;
 }  
-    
+
+// Funções de associação de eventos -----------------
+function onCampoDeBuscaKeyup(){
+    //Capturar o trecho de busca pelo usuário 
+    const trechoBuscado = campoDeBusca.value;
+    //Criar um array com as pizzas filtradas
+    const pizzasFiltradas = filtrarPizzas(pizzasNoMenu, trechoBuscado)
+    //Mostrar as pizzas filtradas
+    showPizzas(pizzasFiltradas);
+}
 
 // Associando a execução de uma função a um evento.
-
+// Comando de inicialização da página ---------------
 campoDeBusca.addEventListener('keyup', onCampoDeBuscaKeyup);
+showPizzas(pizzasNoMenu); 
