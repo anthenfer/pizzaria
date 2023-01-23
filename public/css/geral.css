@@ -108,6 +108,28 @@ form input[type="number"]
     font-weight: 1.3rem;
 }
 
+form input:invalid{
+    border: 3px solid crimson;
+}
+
+form input:valid{
+    border: 3px solid greenyellow;
+}
+form input:invalid + .error-msg{
+    display: block;
+}
+
+form .error-msg{
+    color: crimson;
+    display: block;
+    font-size: 14px;
+    display: none;
+}
+
+form input:required::after{
+    content: "allll";
+}
+
 @media screen and (max-width: 550px){
     .btBuscar {
         display: none;
