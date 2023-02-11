@@ -1,6 +1,7 @@
 main {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 10px;
     padding: 10px;
     position: relative;
@@ -9,12 +10,17 @@ main {
 
 main article{
     position: relative;
-    min-height: 320px;
+}
+
+main article::before{
+    content: "";
+    padding-bottom: 100%;
+    display: block;
 }
 
 main article:hover a,
-main article:hover button{
-    display: block;
+main article:hover button
+{
     opacity: 1;
 }
 
@@ -24,6 +30,9 @@ main article h2 {
     top: 5px;
     background-color: rgba(255, 255, 255, 0.8);
     padding: 5px;    
+    font-size: 1.5rem;
+    color: #000;
+    cursor: default;
 }
 
 main article span {
@@ -32,7 +41,8 @@ main article span {
     top: 40px;
     background-color: rgba(0, 0, 0, 0.8);
     color: #FFF;
-    padding: 5px;    
+    padding: 5px; 
+    cursor: default;
 }
 
 main article a {
@@ -44,7 +54,7 @@ main article a {
     text-decoration: none;
     color: #FFF;
     opacity: 0;
-    transition: 300ms;
+    transition: opacity 300ms;
 }
 
 main article button {
@@ -53,27 +63,15 @@ main article button {
     right: 0;
     bottom: 20px;
     opacity: 0;
-    transition: 300ms;
+    transition: opacity 300ms;
 }
 
 main article img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     display: block;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
-
-@media screen and (max-width:720px){    
-    main {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media screen and (max-width:520px){    
-    main {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-}
-

@@ -13,6 +13,7 @@ html {
 
 body {
     background-color: gray;
+    color: #FFF;
 }
 
 body::before{
@@ -70,7 +71,7 @@ button, .input-file-container {
 }
 
 button:hover, .input-file-container:hover{
-    background-color: black;
+    background-color: #fca91b;
 }
 
 .btBuscar {
