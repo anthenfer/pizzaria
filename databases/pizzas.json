@@ -174,5 +174,10 @@
         "img": "/img/quatroqueijos.jpg",
         "destaque": true,
         "score": 3
+    },
+    {
+        "nome": "Pizza de rúcula",
+        "preco": 39,
+        "ingredientes": "rucula, tomate,.queijo de bufala, catupiry"
     }
 ]
