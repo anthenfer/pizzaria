@@ -176,8 +176,17 @@
         "score": 3
     },
     {
-        "nome": "Pizza de rúcula",
-        "preco": 39,
-        "ingredientes": "rucula, tomate,.queijo de bufala, catupiry"
+        "nome": "Ivete Sangalo",
+        "ingredientes": [
+            "Alegria",
+            "Folia",
+            "Carnaval",
+            "Bahia"
+        ],
+        "preco": 5.5,
+        "img": "/img/no-image.png",
+        "destaque": false,
+        "score": 0,
+        "id": 14
     }
 ]

@@ -17,7 +17,7 @@ router.get('/api/pizzas', PizzasController.index);
 
 router.get('/adm/pizzas', AdmController.listarPizzas); //Mostrar listas das pizzas cadastro;
 router.get('/adm/pizzas/create', AdmController.criarPizza); //Mostrar form para add pizza;
-router.get('/adm/pizzas/edit', (req,res) => {}); //Mostrar form parar alterar pizza;
+router.get('/adm/pizzas/:id/edit', AdmController.showEditPizza); //Mostrar form parar alterar pizza;
 router.post('/adm/pizzas/store', AdmController.gravarPizza); //Receber info digitada para criação de uma pizza;
 router.post('/adm/pizzas/update', (req,res) => {}); //Receber info digitada para alteração de uma pizza;
 router.post('/adm/pizzas/delete', (req,res) => {}); //Receber o id da pizza a ser removida;
