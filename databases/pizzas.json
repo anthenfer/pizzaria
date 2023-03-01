@@ -188,5 +188,18 @@
         "destaque": false,
         "score": 0,
         "id": 14
+    },
+    {
+        "nome": "Cleiton",
+        "ingredientes": [
+            "Inteligencia",
+            "audacia",
+            "belo"
+        ],
+        "preco": 1000000000000000,
+        "img": "/img/no-image.png",
+        "destaque": false,
+        "score": 0,
+        "id": 15
     }
 ]

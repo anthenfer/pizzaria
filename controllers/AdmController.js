@@ -32,11 +32,15 @@ const AdmController = {
     },
     showEditPizza: (req, res) => {
         //Capturar o id da pizza a ser editada  (req.params)
-
+        let id = req.params.idDaPizza;
         //Encontrar a pizza a ser editada guardando na variavel pizza (PizzasServices.carregarPizza)
-
+        // localizar a pizza de id procurado
+        function guardarPizza (pizzas) {
+            const pizza = pizzas.find( p => p.id == id);
+        }
         //renderizar a view (ainda inexistente) form-edit-pizza.ejs
         //passando para essa view (res.render(____, {pizza}));
+        return res.render('form-edit-pizza.ejs', {pizza});
     }
 }
 

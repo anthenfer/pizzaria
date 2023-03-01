@@ -74,7 +74,7 @@ const PaginasController = {
     },
 
     showCadastro: (req, res)=>{
-        return res.sendFile(path.resolve("views/cadastro.html"));
+        return res.sendFile(path.resolve("views/cadastro.ejs"));
     },
 
     showPizza: (req, res) => {
