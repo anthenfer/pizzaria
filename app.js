@@ -5,15 +5,40 @@
 const express = require('express'); 
 const path = require('path');
 const router = require('./router');
+const session = require('express-session');
+
+const bloqueiaForaDeHora = require('./middlewares/bloqueiaForaDeHora');
+const registraRequisicao = require('./middlewares/registraRequisicao');
 
 // 2 - Criar o servidor ou aplicação, basta executar a função express; 
 const servidor = express();
 servidor.set('view engine', 'ejs');
 
-//Define a pasta public como sendo a pasta de arquivos estátiscos
+// Define a pasta public como sendo a pasta de arquivos estátiscos
+servidor.use(session({
+        secret: 'SEGREDO',
+        resave: false,
+        saveUninitialized: false
+}))
+    
+
 servidor.use(express.static(path.join(__dirname, 'public')))
 servidor.use(express.urlencoded({ extended: false }));
 
+// Configurando middlewares
+servidor.use(registraRequisicao);
+// servidor.use(bloqueiaForaDeHora);
+
+servidor.use(
+    (req, res, next) => {
+        if(req.session.admLogado){
+            console.log('Administrador logado...')
+        }else{
+            console.log("Visita qualquer...")
+        }
+        next();
+    }
+)
 
 // 3 -  Definir roteador a ser utilizado
 servidor.use(router);    

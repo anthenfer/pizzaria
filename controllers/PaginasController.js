@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const bcrypt = require('bcrypt');
 const idu = 2;
 
 const PaginasController = {
@@ -88,8 +89,15 @@ const PaginasController = {
 
         // mandar a pizza ser exibida...
         return res.render('pizza.ejs', {pizza});
-    }
+    },
 
+    showLogin: (req, res) => {
+        res.render('login.ejs');
+    },
+
+    login: (req, res) => {
+        res.send(req.body);
+    }
 }
 
 

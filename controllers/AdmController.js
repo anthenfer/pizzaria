@@ -41,7 +41,34 @@ const AdmController = {
         //renderizar a view (ainda inexistente) form-edit-pizza.ejs
         //passando para essa view (res.render(____, {pizza}));
         return res.render('form-edit-pizza.ejs', {pizza});
+    },
+    showLogin: (req, res) => {
+        res.render('login.ejs');
+    },
+    login: (req, res) => {
+        // Passos para o controller login:
+
+        // 1 - Capturar o email e a senha digitados pelo administrador
+        const { email, senha } = req.body
+        // 2 - Verificar a existência do administrador.
+        // Caso não exista, enviar mensagem de erro
+        const administradores = require('../databases/administradores.json');
+        let adm = administradores.find(adm => adm.email === email);
+            if (adm === undefined) {
+                return res.send("Falha no login");
+            }
+        // 3 - Verificar a senha do administrador.
+        // Caso senha não seja válida, enviar mensagem de erro
+        const senhaOk = bcrypt.compareSync(senha, adm.senha);
+            if (!senhaOk) {
+                return res.send("Falha no login");
+            }
+       // 4 - Criar a session/cookie do administrador
+            req.session.admLogado = true;
+        // 5 - Redirecioná-lo para /adm/pizzas
+            res.redirect('/adm/pizzas');
     }
+
 }
 
 
