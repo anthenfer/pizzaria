@@ -4,6 +4,8 @@ const AdmController = {
     listarPizzas: (req, res) => {
         //carregar as pizzas
         const pizzas = PizzasServices.carregarPizzas();
+        const msg = req.query.msg
+
         //Renderizar a view listar-pizzas, passando as pizzas para ela
         res.render('lista-de-pizzas.ejs', { pizzas })
     },
@@ -67,8 +69,18 @@ const AdmController = {
             req.session.admLogado = true;
         // 5 - Redirecioná-lo para /adm/pizzas
             res.redirect('/adm/pizzas');
-    }
-
+    },
+    delete: (req,res) =>{
+        
+            // capturar o id da pizza
+            const id = req.params.id;
+    
+            // deletar a pizza pelo id
+            PizzasServices.removerPizza(id);
+            
+            // redirecionar para /adm/pizzas (informando que deletou com sucesso)
+            res.redirect('/adm/pizzas?msg=pizzaApagada');
+        }
 }
 
 
