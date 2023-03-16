@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,21 +8,18 @@
     <link rel="stylesheet" href="/css/geral.css">
     <style>
         .nav-adm {
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0,0,0,0.5);
             filter: blur(0.5);
         }
-    
-        .nav-adm ul {
+        .nav-adm ul{
             margin: 0 auto;
             padding: 0;
             width: 960px;
             display: flex;
         }
-    
-        .nav-adm ul li {
+        .nav-adm ul li{
             display: block;
         }
-    
         .nav-adm ul li a {
             display: block;
             padding: 20px;
@@ -31,47 +27,38 @@
             color: #FFF;
             font-size: 1.2rem;
         }
-    
-        .nav-adm ul li.selected a {
+        .nav-adm ul li.selected a{
             background-color: #333333;
             cursor: default;
         }
-    
         .nav-adm ul li:hover {
             background-color: rgba(255, 255, 255, 0.3);
         }
-    
         main {
             width: 960px;
             margin: 20px auto;
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0,0,0,0.5);
             filter: blur(0.5);
         }
-    
         #tabela-de-pizzas {
             width: 100%;
             border-collapse: collapse;
         }
-    
         #tabela-de-pizzas tbody td {
             border: 1px solid #666;
             padding: 5px;
         }
-    
-        #tabela-de-pizzas td:nth-child(1) {
+        #tabela-de-pizzas td:nth-child(1){
             width: 30px;
         }
-    
-        #tabela-de-pizzas td:nth-child(2) {
+        #tabela-de-pizzas td:nth-child(2){
             width: 100px;
         }
-    
         #tabela-de-pizzas img {
             width: 100%;
             display: block;
         }
-    
         .bt {
             text-decoration: none;
             background-color: #DDD;
@@ -81,7 +68,6 @@
         }
     </style>
 </head>
-
 <body>
     <nav class="nav-adm">
         <ul>
@@ -92,7 +78,7 @@
         </ul>
     </nav>
     <main>
-        <a href="/adm/pizzas/create">Adicionar nova pizza</a>
+        <a class="bt" href="/adm/pizzas/create">Adicionar nova pizza</a>
         <table id="tabela-de-pizzas">
             <thead>
                 <tr>
@@ -104,26 +90,20 @@
                 </tr>
             </thead>
             <tbody>
-                <% for (const p of pizzas) { %>
+                <% for(const p of pizzas) { %>
                     <tr>
-                        <td>
-                            <%= p.id %>
-                        </td>
+                        <td><%= p.id %></td>
                         <td><img src="<%= p.img %>" alt="<%= p.nome %>"></td>
+                        <td><%= p.nome %></td>
+                        <td>R$ <%= p.preco %></td>
                         <td>
-                            <%= p.nome %>
-                        </td>
-                        <td>R$ <%= p.preco %>
-                        </td>
-                        <td>
-                            <a class="bt" href="/adm/pizzas/ <%= p.id %> /edit">Editar</a>
+                            <a class="bt" href="/adm/pizzas/<%= p.id %>/edit">Editar</a>
                             <a class="bt" href="#">Remover</a>
                         </td>
                     </tr>
-                    <% } %>
+                <% } %>
             </tbody>
         </table>
     </main>
 </body>
-
 </html>

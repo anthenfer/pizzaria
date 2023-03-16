@@ -1,9 +1,9 @@
-const verificaSeLogado = (res, req, next) => {
-    //Verificar se o usúario está logado
+const verificaSeLogado = (req, res, next) => {
+    
     if(req.session.admLogado){
         next();
     } else {
-        res.redirect('/adm/login')
+        res.redirect('/adm/login');
     }
 }
 

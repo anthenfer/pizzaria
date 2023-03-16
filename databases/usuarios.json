@@ -1,9 +1,9 @@
 [
     {
         "id": 2,
-        "nome": "Novo Nome do Usuário da Silva",
-        "email": "novo@email-do-usuario.com",
-        "senha": "nova-senha-sem-criptografar",
+        "nome": "Bruno Bezerra",
+        "email": "bruno@bezerra.com",
+        "senha": "abcde",
         "enderecos": [
             "Rua das Camélias, 99",
             "teste"
@@ -99,17 +99,5 @@
             "asdasdasd"
         ],
         "formasDePagamento": []
-    },
-    {
-        "id": 130,
-        "nome": "Novo teste",
-        "email": "email@dousuario.com",
-        "senha": "senha_do_usuario_sem_criptografar",
-        "enderecos": [
-            "Rua dos usuários, nº 256. Usuariolândia-BA"
-        ],
-        "formasDePagamento": [
-            "Pix"
-        ]
     }
 ]

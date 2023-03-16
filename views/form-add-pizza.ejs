@@ -65,7 +65,7 @@
         </ul>
     </nav>
     <main>
-        <form action="/adm/pizzas/store" method="post">
+        <form action="/adm/pizzas/store" method="post" enctype="multipart/form-data">
             <label>
                 Nome:
                 <input type="text" name="nome" id="nome" placeholder="Digite o nome da pizza">
@@ -83,7 +83,7 @@
     
             <label>
                 Foto:
-                <img src="/img/no-image.png">
+                <img id="imagem-da-pizza" src="/img/no-image.png">
                 <div>Clique para selecione nova imagem</div>
                 <input type="file" name="img" id="img">
             </label>
@@ -91,5 +91,12 @@
             <button type="submit">Salvar</button>
         </form>
     </main>
+    <script type="module">
+        
+        const elementoImg = document.getElementById('imagem-da-pizza');
+        const campoDoArquivo = document.getElementById('img');
+        import { mostrarArquivoSelecionadoNoElementoImg } from "/js/mostrarArquivoSelecionadoNoElementoImg.mjs";
+        mostrarArquivoSelecionadoNoElementoImg(campoDoArquivo, elementoImg);
+    </script>
 </body>
 </html>

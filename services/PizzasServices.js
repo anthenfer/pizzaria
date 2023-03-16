@@ -6,7 +6,7 @@ const path = require('path');
  * Retorna um array com todas as pizzas gravadas.
  * @returns {Pizza[]}
  */
-function carregarPizzas() {
+function carregarPizzas(){
     return pizzas;
 };
 
@@ -16,9 +16,9 @@ function carregarPizzas() {
  * @returns {Pizza} 
  * @throws Emite erro caso não encontre nenhuma pizza com o id dado
  */
-function carregarPizza(idDaPizza) {
+function carregarPizza(idDaPizza){
     let pizza = pizzas.find(p => p.id == idDaPizza);
-    if (pizza == undefined) {
+    if(pizza == undefined){
         throw new Error("Pizza inexistente");
     }
     return pizza;
@@ -35,19 +35,22 @@ function adicionarPizza(pizza){
     } else {
         pizza.id = 1;
     }
+
     // Adicionar pizza ao array de pizzas
     pizzas.push(pizza);
+
     // Salvar este array no arquivo pizzas.json
     salvar();
 }
+
 /**
  * Remove uma pizza.
  * @param {number} idDaPizza
  * @throws Emite erro caso não exista pizza com o id passado
  */
-function removerPizza(idDaPizza) {
+function removerPizza(idDaPizza){
     let posicao = pizzas.findIndex(p => p.id == idDaPizza);
-    if (posicao == -1) {
+    if(posicao == -1){
         throw new Error("Pizza inexistente");
     }
     pizzas.splice(posicao, 1);
@@ -59,9 +62,9 @@ function removerPizza(idDaPizza) {
  * @param {number} idDaPizza 
  * @param {{nome: string, ingredientes:string[], preco:number, destaque: boolean}} dadosDaPizza 
  */
-function alterarPizza(idDaPizza, dadosDaPizza) {
+function alterarPizza(idDaPizza, dadosDaPizza){
     let pizza = pizzas.find(p => p.id == idDaPizza);
-    if (pizza == undefined) {
+    if(pizza == undefined){
         throw new Error("Pizza inexistente");
     }
 
@@ -74,7 +77,7 @@ function alterarPizza(idDaPizza, dadosDaPizza) {
 
 }
 
-function salvar() {
+function salvar(){
     const caminhoParaArquivo = path.resolve(__dirname + "/../databases/pizzas.json");
     fs.writeFileSync(caminhoParaArquivo, JSON.stringify(pizzas, null, 4));
 }

@@ -26,20 +26,6 @@
         "score": 24
     },
     {
-        "id": 3,
-        "nome": "Fracatu",
-        "ingredientes": [
-            "mussarela",
-            "frango",
-            "catupiry",
-            "cebola"
-        ],
-        "preco": 38.5,
-        "img": "/img/fracatu.jpg",
-        "destaque": true,
-        "score": 12
-    },
-    {
         "id": 4,
         "nome": "Marguerita",
         "ingredientes": [
@@ -94,19 +80,6 @@
         "img": "/img/quatroqueijos.jpg",
         "destaque": true,
         "score": 3
-    },
-    {
-        "id": 8,
-        "nome": "Caipira",
-        "ingredientes": [
-            "mussarela",
-            "milho verde",
-            "frango"
-        ],
-        "preco": 38.5,
-        "img": "/img/quatroqueijos.jpg",
-        "destaque": true,
-        "score": 2
     },
     {
         "id": 9,
@@ -176,30 +149,41 @@
         "score": 3
     },
     {
-        "nome": "Ivete Sangalo",
+        "nome": "Tamarindo",
         "ingredientes": [
-            "Alegria",
-            "Folia",
-            "Carnaval",
-            "Bahia"
+            "tamarindo",
+            "mussarela",
+            "coragem"
         ],
-        "preco": 5.5,
+        "preco": 50,
         "img": "/img/no-image.png",
         "destaque": false,
         "score": 0,
         "id": 14
     },
     {
-        "nome": "Cleiton",
+        "nome": "Robalo",
         "ingredientes": [
-            "Inteligencia",
-            "audacia",
-            "belo"
+            "robalo",
+            "molho de tomate",
+            "fermento"
         ],
-        "preco": 1000000000000000,
+        "preco": 500,
         "img": "/img/no-image.png",
         "destaque": false,
         "score": 0,
         "id": 15
+    },
+    {
+        "nome": "Sorte",
+        "ingredientes": [
+            "trevo de quatro folhas",
+            "pé de coelho"
+        ],
+        "preco": 900,
+        "img": "/img/1677677393105-capa-capitao-cueca-colorido.png",
+        "destaque": false,
+        "score": 0,
+        "id": 20
     }
 ]
