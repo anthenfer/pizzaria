@@ -18,11 +18,12 @@ const sql = `SELECT
                 LEFT JOIN pedido_pizza as pp ON p.id = pp.pizza_id
             group by p.id, p.nome;`
 
-const promise = conexao.query(sql);
+const promise = conexao.query(sql, {type: sequelize.QueryTypes.SELECT});
 // console.log(promise);
 
 promise.then(
     data => {
         console.log(data)
+        conexao.close()
     }
 );
